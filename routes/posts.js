@@ -6,7 +6,8 @@ module.exports = {
     res.status(200).send(posts)
   },
   addPost(req, res) {
-	let newPost = req.body
+    let newPost = req.body
+    newPost.comments = [] // default to empty array
     let postId = req.store.posts.length
     req.store.posts.push(newPost)
     res.status(201).send({postId: postId})
@@ -22,3 +23,4 @@ module.exports = {
     res.status(204).send()
   }
 }
+
